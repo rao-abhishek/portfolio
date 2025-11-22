@@ -1,0 +1,338 @@
+/* Terminal Layout - Color-Coded Retro Hacker Theme */
+.layout-terminal {
+    font-family: 'Courier New', 'Courier', monospace;
+    background: #0a0a0a;
+}
+
+.layout-terminal body {
+    background: #0a0a0a !important;
+}
+
+.layout-terminal section {
+    background: #0a0a0a !important;
+    padding: 5rem 0;
+    border-bottom: 1px solid #00ff00;
+}
+
+/* Section titles - Cyan (commands) */
+.layout-terminal .section-title {
+    color: #00ffff !important;
+    font-family: 'Courier New', monospace;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+.layout-terminal .section-title::before {
+    content: '$ ';
+    color: var(--accent-primary);
+}
+
+/* Subtitles - Gray (comments) */
+.layout-terminal .section-subtitle {
+    color: #999999 !important;
+    font-family: 'Courier New', monospace;
+}
+
+.layout-terminal .section-subtitle::before {
+    content: '# ';
+    color: #666666;
+}
+
+/* Cards - Dark with theme border */
+.layout-terminal .card {
+    background: #111111;
+    border: 1px solid var(--accent-primary);
+    border-radius: 0;
+    box-shadow: 0 0 10px var(--accent-primary);
+}
+
+.layout-terminal .card:hover {
+    box-shadow: 0 0 20px var(--accent-primary);
+    border-color: var(--accent-primary);
+}
+
+/* Primary buttons - Theme color */
+.layout-terminal .btn-primary {
+    background: var(--accent-primary);
+    color: #0a0a0a !important;
+    border: 2px solid var(--accent-primary);
+    border-radius: 0;
+    font-family: 'Courier New', monospace;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.layout-terminal .btn-primary:hover {
+    background: #0a0a0a;
+    color: var(--accent-primary) !important;
+    box-shadow: 0 0 15px var(--accent-primary);
+}
+
+/* Secondary buttons - Cyan */
+.layout-terminal .btn-secondary {
+    background: transparent;
+    color: #00ffff !important;
+    border: 2px solid #00ffff;
+    border-radius: 0;
+    font-family: 'Courier New', monospace;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.layout-terminal .btn-secondary:hover {
+    background: #00ffff;
+    color: #0a0a0a !important;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+}
+
+/* Gradient text - Theme accent */
+.layout-terminal .gradient-text {
+    background: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: unset;
+    color: var(--accent-primary);
+    text-shadow: 0 0 10px var(--accent-primary);
+}
+
+/* H1 - Cyan (main commands) */
+.layout-terminal h1 {
+    color: #00ffff !important;
+    font-family: 'Courier New', monospace;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+/* H2 - Green (success/output) */
+.layout-terminal h2 {
+    color: #00ff00 !important;
+    font-family: 'Courier New', monospace;
+}
+
+/* H3 - Theme accent (special) */
+.layout-terminal h3 {
+    color: var(--accent-primary) !important;
+    font-family: 'Courier New', monospace;
+    text-shadow: 0 0 8px var(--accent-primary);
+}
+
+/* Paragraphs - Light gray (READABLE) */
+.layout-terminal p {
+    color: #cccccc !important;
+    font-family: 'Courier New', monospace;
+    line-height: 1.6;
+}
+
+/* List items - Light gray (READABLE) */
+.layout-terminal li {
+    color: #cccccc !important;
+    font-family: 'Courier New', monospace;
+    list-style: none;
+}
+
+.layout-terminal ul {
+    list-style: none;
+}
+
+/* Experience section list items - keep the arrow */
+.layout-terminal #experience li {
+    padding-left: 1.5rem !important;
+    position: relative;
+    margin-bottom: 0.75rem;
+}
+
+.layout-terminal #experience li span:first-child {
+    position: absolute;
+    left: 0;
+    color: #00ff00 !important;
+}
+
+/* Spans - Yellow (highlighted values) */
+.layout-terminal span {
+    color: #ffff00 !important;
+    font-family: 'Courier New', monospace;
+}
+
+/* Links - Cyan with underline */
+.layout-terminal a {
+    color: #00ffff !important;
+    text-decoration: underline;
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
+}
+
+.layout-terminal a:hover {
+    color: var(--accent-primary) !important;
+    text-shadow: 0 0 10px var(--accent-primary);
+}
+
+/* Special: Company names - Theme accent */
+.layout-terminal .card h3:first-of-type {
+    color: var(--accent-primary) !important;
+}
+
+/* Special: Tech stack badges - Color coded with theme */
+.layout-terminal #skills span,
+.layout-terminal #experience span {
+    background: #1a1a1a !important;
+    border: 1px solid var(--accent-primary) !important;
+    color: var(--accent-primary) !important;
+    padding: 0.4rem 0.8rem;
+}
+
+.layout-terminal #skills span:nth-child(3n+1) {
+    border-color: #00ffff !important;
+    color: #00ffff !important;
+}
+
+.layout-terminal #skills span:nth-child(3n+2) {
+    border-color: #ffff00 !important;
+    color: #ffff00 !important;
+}
+
+.layout-terminal #skills span:nth-child(3n+3) {
+    border-color: var(--accent-primary) !important;
+    color: var(--accent-primary) !important;
+}
+
+/* Blinking cursor effect for headings */
+.layout-terminal h1::after,
+.layout-terminal .section-title::after {
+    content: '▮';
+    animation: blink 1s infinite;
+    margin-left: 0.5rem;
+    color: #00ff00;
+}
+
+@keyframes blink {
+
+    0%,
+    49% {
+        opacity: 1;
+    }
+
+    50%,
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Scanline effect */
+.layout-terminal::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom,
+            transparent 50%,
+            rgba(0, 255, 0, 0.02) 50%);
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+
+/* Minimal Layout - Clean and Simple */
+.layout-minimal {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.layout-minimal body {
+    background: #ffffff !important;
+}
+
+.layout-minimal section {
+    background: #ffffff !important;
+    padding: 4rem 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.layout-minimal .section-title {
+    color: #000000 !important;
+    font-weight: 300;
+    font-size: 2rem;
+    letter-spacing: -0.02em;
+}
+
+.layout-minimal .section-subtitle {
+    color: #666666 !important;
+    font-weight: 300;
+    font-size: 0.95rem;
+}
+
+.layout-minimal .card {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    box-shadow: none;
+    padding: 1.5rem;
+}
+
+.layout-minimal .card:hover {
+    border-color: var(--accent-primary);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.layout-minimal .btn-primary {
+    background: #000000;
+    color: #ffffff !important;
+    border: none;
+    border-radius: 2px;
+    font-weight: 400;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+}
+
+.layout-minimal .btn-primary:hover {
+    background: #333333;
+    transform: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.layout-minimal .btn-secondary {
+    background: transparent;
+    color: #000000 !important;
+    border: 1px solid #000000;
+    border-radius: 2px;
+    font-weight: 400;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+}
+
+.layout-minimal .btn-secondary:hover {
+    background: #000000;
+    color: #ffffff !important;
+    transform: none;
+}
+
+.layout-minimal .gradient-text {
+    background: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: unset;
+    color: #000000;
+    font-weight: 400;
+}
+
+.layout-minimal h1,
+.layout-minimal h2,
+.layout-minimal h3 {
+    color: #000000 !important;
+    font-weight: 300;
+}
+
+.layout-minimal h3 {
+    font-weight: 400;
+}
+
+.layout-minimal p,
+.layout-minimal li {
+    color: #333333 !important;
+    font-weight: 300;
+    line-height: 1.8;
+}
+
+.layout-minimal #home {
+    background: #fafafa !important;
+    border-bottom: none;
+}

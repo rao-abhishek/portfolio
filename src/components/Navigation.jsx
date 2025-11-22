@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import ThemeSwitcher from './ThemeSwitcher';
+import LayoutSwitcher from './LayoutSwitcher';
 
 const Navigation = () => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -138,6 +139,7 @@ const Navigation = () => {
 
                         {/* Theme Switcher & Mobile Menu Button */}
                         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                            <LayoutSwitcher />
                             <ThemeSwitcher />
 
                             <button

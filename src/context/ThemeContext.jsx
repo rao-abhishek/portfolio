@@ -79,30 +79,75 @@ export const themes = {
 
 export const ThemeProvider = ({ children }) => {
     const [currentTheme, setCurrentTheme] = useState('dark');
+    const [currentLayout, setCurrentLayout] = useState('modern');
 
     useEffect(() => {
-        const savedTheme = localStorage.getItem('portfolio-theme');
-        if (savedTheme && themes[savedTheme]) {
-            setCurrentTheme(savedTheme);
-        }
+        // Always select a random theme on page load
+        const themeKeys = Object.keys(themes);
+        const randomTheme = themeKeys[Math.floor(Math.random() * themeKeys.length)];
+        setCurrentTheme(randomTheme);
+    }, []);
+
+    // Listen for layout changes
+    useEffect(() => {
+        const handleLayoutChange = () => {
+            const layout = localStorage.getItem('portfolio-layout') || 'modern';
+            setCurrentLayout(layout);
+        };
+
+        handleLayoutChange();
+        window.addEventListener('layoutchange', handleLayoutChange);
+
+        // Also check on storage change
+        window.addEventListener('storage', handleLayoutChange);
+
+        return () => {
+            window.removeEventListener('layoutchange', handleLayoutChange);
+            window.removeEventListener('storage', handleLayoutChange);
+        };
     }, []);
 
     useEffect(() => {
         const theme = themes[currentTheme];
         const root = document.documentElement;
 
-        root.style.setProperty('--bg-primary', theme.bgPrimary);
-        root.style.setProperty('--bg-secondary', theme.bgSecondary);
-        root.style.setProperty('--bg-tertiary', theme.bgTertiary);
-        root.style.setProperty('--text-primary', theme.textPrimary);
-        root.style.setProperty('--text-secondary', theme.textSecondary);
+        // Determine if we're in a light layout
+        const isLightLayout = currentLayout === 'bento' || currentLayout === 'magazine' || currentLayout === 'minimal';
+        const isTerminal = currentLayout === 'terminal';
+
+        if (isTerminal) {
+            // Terminal layout - dark background with readable text and theme accents
+            root.style.setProperty('--bg-primary', '#0a0a0a');
+            root.style.setProperty('--bg-secondary', '#111111');
+            root.style.setProperty('--bg-tertiary', '#1a1a1a');
+            root.style.setProperty('--text-primary', '#00ffff');
+            root.style.setProperty('--text-secondary', '#cccccc');
+            root.style.setProperty('--border-color', theme.accentPrimary);
+        } else if (isLightLayout) {
+            // Force light backgrounds and dark text for Bento, Magazine, and Minimal
+            root.style.setProperty('--bg-primary', '#fafafa');
+            root.style.setProperty('--bg-secondary', '#ffffff');
+            root.style.setProperty('--bg-tertiary', '#f5f5f5');
+            root.style.setProperty('--text-primary', '#0a0a0a');
+            root.style.setProperty('--text-secondary', '#404040');
+            root.style.setProperty('--border-color', '#e5e5e5');
+        } else {
+            // Use theme colors for Modern Dark layout
+            root.style.setProperty('--bg-primary', theme.bgPrimary);
+            root.style.setProperty('--bg-secondary', theme.bgSecondary);
+            root.style.setProperty('--bg-tertiary', theme.bgTertiary);
+            root.style.setProperty('--text-primary', theme.textPrimary);
+            root.style.setProperty('--text-secondary', theme.textSecondary);
+            root.style.setProperty('--border-color', theme.borderColor);
+        }
+
+        // Accent colors always come from theme
         root.style.setProperty('--accent-primary', theme.accentPrimary);
         root.style.setProperty('--accent-secondary', theme.accentSecondary);
         root.style.setProperty('--accent-gradient', theme.accentGradient);
-        root.style.setProperty('--border-color', theme.borderColor);
 
         localStorage.setItem('portfolio-theme', currentTheme);
-    }, [currentTheme]);
+    }, [currentTheme, currentLayout]);
 
     return (
         <ThemeContext.Provider value={{ currentTheme, setCurrentTheme, themes }}>

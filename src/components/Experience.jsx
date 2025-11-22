@@ -124,13 +124,13 @@ const Experience = () => {
                                             color: 'var(--text-secondary)',
                                             lineHeight: 1.6
                                         }}>
-                                            <span style={{
+                                            <div style={{
                                                 position: 'absolute',
                                                 left: 0,
                                                 color: 'var(--accent-primary)'
                                             }}>
-                                                ▹
-                                            </span>
+                                                {'>'}
+                                            </div>
                                             {achievement}
                                         </li>
                                     ))}
