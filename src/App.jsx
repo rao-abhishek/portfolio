@@ -7,6 +7,7 @@ import Projects from './components/Projects';
 import Contact from './components/Contact';
 import { ThemeProvider, useTheme } from './context/ThemeContext';
 import { LayoutProvider, useLayout } from './context/LayoutContext';
+import { Analytics } from '@vercel/analytics/react';
 import './index.css';
 import './layouts.css';
 import './new-layouts.css';
@@ -24,6 +25,7 @@ function AppContent() {
       <Skills />
       <Projects />
       <Contact />
+      <Analytics />
     </div>
   );
 }
