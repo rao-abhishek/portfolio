@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail, ExternalLink, Code2, Download } from 'lucide-react';
+import { track } from '@vercel/analytics';
 
 // Calculate years of experience
 const calculateExperience = () => {
@@ -120,6 +121,7 @@ const Hero = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                             className="btn-secondary"
+                            onClick={() => track('resume_download', { location: 'hero_section' })}
                         >
                             Download Resume
                             <Download size={18} />
